@@ -19,7 +19,7 @@ public class Test {
 
 	public static void main(String[] args) throws MalformedURLException {
 		DesiredCapabilities capabilities = new DesiredCapabilities();
-		String apkpath = "/Users/Chyna/Documents/java_wiki_appium/java_wiki_appium/apps/wikiapp-alpha-debug.apk";
+		String apkpath = "/Users/Chyna/Documents/java_wiki_appium/java_wiki_appium/apps/wiki/app-alpha-debug.apk";
 		File app = new File(apkpath);
 		
 		capabilities.setCapability(MobileCapabilityType.DEVICE_NAME,"SUMSUNG");
