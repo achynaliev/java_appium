@@ -1,12 +1,14 @@
 package tests;
 
 import io.appium.java_client.AppiumDriver;
+import screens.LandingScreen;
+
+import static org.junit.Assert.assertTrue;
 
 import java.net.MalformedURLException;
 
 import org.junit.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
+
 
 import framework.BaseTestsClass;
 import framework.TestDriver;
@@ -17,18 +19,19 @@ public class FirstTest extends BaseTestsClass {
 	
 	@Test
 	public void searchTest() {
-
-		String expectedTitle = "Automation";
 		
-		TestDriver.driver.findElement(By.id("main_search_bar_text")).click();
-		TestDriver.driver.getKeyboard().sendKeys("Automation");
-		WebElement pagelistitemcontainer = (WebElement) TestDriver.driver.findElements(By.id("page_list_item_container")).get(0);
-		pagelistitemcontainer.click();
-		String actualTitle = TestDriver.driver.findElement(By.id("page_title_text")).getText();
+		LandingScreen landingScreen = new LandingScreen(driver);
+		String expectedTitle = "Automation Master";
+		
+		landingScreen.getSearchField().click();
+		landingScreen.keyboard().sendKeys("Automation");
+		landingScreen.getSearchResultsItem(2).click();
+		
+		String actualTitle = landingScreen.getArticleTitle().getText();
 		System.out.println("expectedTitle = "+ expectedTitle);
 		System.out.println("actualTitle = "+ actualTitle);
        
-		//assert(expectedTitle.equalsIgnoreCase(actualTitle));
+		assertTrue("Actual title is not equal to expected title", actualTitle.contains(expectedTitle));
 	}
 
 }
