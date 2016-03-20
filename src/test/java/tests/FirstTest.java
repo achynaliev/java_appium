@@ -1,4 +1,4 @@
-package core.java_wiki_appium;
+package tests;
 
 import io.appium.java_client.AppiumDriver;
 
